@@ -1,0 +1,1157 @@
+/* =========================================================
+   STUDENT ATTENDANCE SYSTEM
+   PROFESSIONAL ANIMATED CSS
+   ========================================================= */
+
+
+/* =========================
+   RESET
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    min-height: 100vh;
+    color: #172033;
+
+    background:
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.18), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(14, 165, 233, 0.15), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(139, 92, 246, 0.12), transparent 35%),
+        #f4f7fb;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   ANIMATED BACKGROUND
+   ========================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: -1;
+}
+
+body::before {
+    background: #6366f1;
+    top: -120px;
+    left: -100px;
+    animation: floatingBlob 9s ease-in-out infinite;
+}
+
+body::after {
+    background: #06b6d4;
+    right: -100px;
+    bottom: -120px;
+    animation: floatingBlob 11s ease-in-out infinite reverse;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+   ========================= */
+
+.container {
+    width: min(1450px, 94%);
+    margin: 0 auto;
+    padding: 45px 0 70px;
+
+    animation: pageEnter 0.8s ease both;
+}
+
+
+/* =========================
+   MAIN TITLE
+   ========================= */
+
+.container > h1 {
+    position: relative;
+    text-align: center;
+
+    font-size: clamp(25px, 3vw, 42px);
+    font-weight: 900;
+    letter-spacing: 1.5px;
+
+    margin-bottom: 35px;
+
+    background: linear-gradient(
+        90deg,
+        #312e81,
+        #4f46e5,
+        #0891b2,
+        #4f46e5,
+        #312e81
+    );
+
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation: gradientText 5s linear infinite;
+}
+
+.container > h1::after {
+    content: "";
+    display: block;
+
+    width: 90px;
+    height: 5px;
+
+    margin: 15px auto 0;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #4f46e5,
+        #06b6d4
+    );
+
+    animation: lineGrow 1s ease 0.5s both;
+}
+
+
+/* =========================
+   CARDS
+   ========================= */
+
+.card {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 22px;
+
+    padding: 28px;
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 15px 45px rgba(69, 99, 139, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    overflow: hidden;
+
+    animation: cardEnter 0.7s ease both;
+}
+
+
+/* Animated shine */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.45),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.card:hover::before {
+    animation: shine 1.2s ease;
+}
+
+
+/* Card hover */
+
+.card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 22px 55px rgba(31, 41, 55, 0.12);
+}
+
+
+/* =========================
+   HEADINGS
+   ========================= */
+
+.card h2 {
+    position: relative;
+
+    display: inline-block;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    color: #1e293b;
+
+    margin-bottom: 22px;
+}
+
+.card h2::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 35%;
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #4f46e5,
+        #06b6d4
+    );
+
+    transition: width 0.3s ease;
+}
+
+.card:hover h2::after {
+    width: 100%;
+}
+
+
+/* =========================
+   FORM GRID
+   ========================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   LABELS
+   ========================= */
+
+label {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    color: #64748b;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================
+   INPUTS
+   ========================= */
+
+input {
+    width: 100%;
+
+    height: 50px;
+
+    padding: 0 15px;
+
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    color: #172033;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:hover {
+    border-color: #a5b4fc;
+}
+
+input:focus {
+    border-color: #6366f1;
+
+    background: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.11),
+        0 8px 20px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================
+   SEARCH BOX
+   ========================= */
+
+.search {
+    height: 56px;
+
+    padding-left: 20px;
+
+    font-size: 15px;
+
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 20px rgba(15, 23, 42, 0.05);
+}
+
+.search:focus {
+    box-shadow:
+        0 0 0 4px rgba(99, 102, 241, 0.12),
+        0 12px 25px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================
+   ADD BUTTON
+   ========================= */
+
+.add {
+    position: relative;
+
+    border: none;
+    outline: none;
+
+    padding: 14px 25px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #6366f1,
+            #06b6d4
+        );
+
+    background-size: 200% 200%;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 25px rgba(79, 70, 229, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    animation: buttonGradient 4s ease infinite;
+}
+
+.add::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    transform: skewX(-25deg);
+
+    transition: left 0.5s ease;
+}
+
+.add:hover::before {
+    left: 130%;
+}
+
+.add:hover {
+    transform: translateY(-3px) scale(1.02);
+
+    box-shadow:
+        0 15px 30px rgba(79, 70, 229, 0.35);
+}
+
+.add:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   STUDENT LIST HEADER
+   ========================= */
+
+.heading-row {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 5px;
+}
+
+.heading-row h2 {
+    margin-bottom: 0;
+}
+
+.heading-row > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.heading-row label {
+    margin-bottom: 0;
+}
+
+#attendanceDate {
+    width: 170px;
+    height: 44px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   TABLE CONTAINER
+   ========================= */
+
+.table-box {
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-top: 20px;
+
+    border-radius: 16px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+
+table {
+    width: 100%;
+
+    min-width: 950px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    background: white;
+}
+
+
+/* =========================
+   TABLE HEADER
+   ========================= */
+
+thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    padding: 17px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1e293b,
+            #334155
+        );
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+thead th:first-child {
+    border-top-left-radius: 15px;
+}
+
+thead th:last-child {
+    border-top-right-radius: 15px;
+}
+
+
+/* =========================
+   TABLE BODY
+   ========================= */
+
+tbody tr {
+    background: #ffffff;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tbody tr:hover {
+    position: relative;
+
+    background: #eef2ff;
+
+    transform: scale(1.003);
+
+    box-shadow:
+        0 8px 25px rgba(79, 70, 229, 0.08);
+}
+
+tbody td {
+    padding: 17px 15px;
+
+    border-bottom: 1px solid #e8edf3;
+
+    font-size: 14px;
+
+    color: #334155;
+
+    vertical-align: middle;
+}
+
+
+/* Student name */
+
+tbody td:first-child {
+    font-weight: 800;
+
+    color: #1e293b;
+}
+
+
+/* Roll number */
+
+tbody td:nth-child(2) {
+    font-weight: 700;
+
+    color: #475569;
+}
+
+
+/* =========================
+   ATTENDANCE STATUS
+   ========================= */
+
+.status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 105px;
+
+    padding: 7px 12px;
+
+    border-radius: 50px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    margin-bottom: 9px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.status:hover {
+    transform: translateY(-2px);
+}
+
+
+/* Present */
+
+.present-text {
+    color: #047857;
+
+    background: #d1fae5;
+
+    border: 1px solid #a7f3d0;
+}
+
+
+/* Absent */
+
+.absent-text {
+    color: #b91c1c;
+
+    background: #fee2e2;
+
+    border: 1px solid #fecaca;
+}
+
+
+/* Late */
+
+.late-text {
+    color: #b45309;
+
+    background: #fef3c7;
+
+    border: 1px solid #fde68a;
+}
+
+
+/* Not marked */
+
+.not-marked-text {
+    color: #64748b;
+
+    background: #f1f5f9;
+
+    border: 1px solid #e2e8f0;
+}
+
+
+/* =========================
+   ATTENDANCE BUTTONS
+   ========================= */
+
+.attendance-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+}
+
+.attendance-buttons button,
+.delete {
+    border: none;
+    outline: none;
+
+    padding: 8px 11px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+/* Present */
+
+.present {
+    color: #047857;
+
+    background: #d1fae5;
+}
+
+.present:hover {
+    background: #a7f3d0;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(16, 185, 129, 0.18);
+}
+
+
+/* Absent */
+
+.absent {
+    color: #b91c1c;
+
+    background: #fee2e2;
+}
+
+.absent:hover {
+    background: #fecaca;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(239, 68, 68, 0.18);
+}
+
+
+/* Late */
+
+.late {
+    color: #b45309;
+
+    background: #fef3c7;
+}
+
+.late:hover {
+    background: #fde68a;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(245, 158, 11, 0.18);
+}
+
+
+/* Click effect */
+
+.attendance-buttons button:active,
+.delete:active {
+    transform: scale(0.93);
+}
+
+
+/* =========================
+   PERCENTAGE
+   ========================= */
+
+tbody td:nth-child(6) strong {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 65px;
+
+    padding: 7px 10px;
+
+    border-radius: 10px;
+
+    background: #eef2ff;
+
+    color: #4338ca;
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    transition: transform 0.25s ease;
+}
+
+tbody tr:hover td:nth-child(6) strong {
+    transform: scale(1.08);
+}
+
+
+/* =========================
+   DELETE BUTTON
+   ========================= */
+
+.delete {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef4444,
+            #dc2626
+        );
+
+    box-shadow:
+        0 6px 15px rgba(239, 68, 68, 0.16);
+}
+
+.delete:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.05);
+
+    box-shadow:
+        0 9px 20px rgba(239, 68, 68, 0.25);
+}
+
+
+/* =========================
+   EMPTY MESSAGE
+   ========================= */
+
+.empty {
+    display: none;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    animation: fadeIn 0.5s ease;
+}
+
+.empty::before {
+    content: "📋";
+
+    display: block;
+
+    font-size: 38px;
+
+    margin-bottom: 10px;
+
+    animation: emptyFloat 2.5s ease-in-out infinite;
+}
+
+
+/* =========================
+   SCROLLBAR
+   ========================= */
+
+::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eef2f7;
+}
+
+::-webkit-scrollbar-thumb {
+    background:
+        linear-gradient(
+            #6366f1,
+            #06b6d4
+        );
+
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:
+        linear-gradient(
+            #4f46e5,
+            #0891b2
+        );
+}
+
+
+/* =========================
+   SELECTION
+   ========================= */
+
+::selection {
+    background: #6366f1;
+    color: white;
+}
+
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes gradientText {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 300% center;
+    }
+}
+
+
+@keyframes buttonGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes lineGrow {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+
+    to {
+        width: 90px;
+        opacity: 1;
+    }
+}
+
+
+@keyframes shine {
+    from {
+        left: -120%;
+    }
+
+    to {
+        left: 140%;
+    }
+}
+
+
+@keyframes floatingBlob {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(35px, 25px) scale(1.12);
+    }
+}
+
+
+@keyframes emptyFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
+}
+
+
+/* =========================
+   RESPONSIVE - TABLET
+   ========================= */
+
+@media (max-width: 1000px) {
+
+    .form-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+
+
+/* =========================
+   RESPONSIVE - MOBILE
+   ========================= */
+
+@media (max-width: 650px) {
+
+    .container {
+        width: 94%;
+
+        padding-top: 25px;
+    }
+
+    .container > h1 {
+        font-size: 23px;
+
+        line-height: 1.3;
+
+        margin-bottom: 25px;
+    }
+
+    .card {
+        padding: 20px;
+
+        border-radius: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+    .heading-row {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    .heading-row > div {
+        width: 100%;
+    }
+
+    #attendanceDate {
+        width: 100%;
+    }
+
+    .add {
+        width: 100%;
+    }
+
+    .search {
+        height: 52px;
+    }
+
+    .table-box {
+        margin-left: -2px;
+
+        width: calc(100% + 4px);
+    }
+
+    table {
+        min-width: 900px;
+    }
+}
+
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+
+@media (max-width: 400px) {
+
+    .card {
+        padding: 16px;
+    }
+
+    .container > h1 {
+        font-size: 20px;
+    }
+
+    .card h2 {
+        font-size: 17px;
+    }
+
+    input {
+        height: 47px;
+    }
+}
+
+
+/* =========================
+   REDUCE MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
